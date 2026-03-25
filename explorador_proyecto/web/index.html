@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pro Pastel Explorer</title>
+    <!-- Eel runtime bridge -->
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- Top Toolbar Panel -->
+        <header class="top-bar">
+            <!-- Navigation -->
+            <div class="nav-group">
+                <button id="btn-back" class="nav-btn" title="Atrás (Volver)">⬅</button>
+                <input type="text" id="path-input" placeholder="Ruta actual del SO...">
+                <button id="btn-go" class="nav-btn">Ir</button>
+            </div>
+
+            <!-- Action Tools & Selectors -->
+            <div class="action-group">
+                <select id="sort-select" class="sort-select">
+                    <option value="date-desc">Más Reciente</option>
+                    <option value="date-asc">Más Antiguo</option>
+                    <option value="name-asc">Nombre (A-Z)</option>
+                    <option value="size-desc">Más Pesado</option>
+                    <option value="type">Por Tipo</option>
+                </select>
+                <button id="btn-view-toggle" class="nav-btn" style="padding: 10px;" title="Alternar Vista">📄
+                    Lista</button>
+                <input type="range" id="size-slider" min="50" max="250" value="100" title="Ajustar Tamaño"
+                    style="cursor: pointer; width: 80px;">
+                <button id="btn-paste" class="action-btn" style="display: none;">📋 Pegar</button>
+            </div>
+
+            <!-- Global Search Controller -->
+            <div class="search-group">
+                <button id="btn-search-mode" class="search-mode-btn" title="Buscar en esta carpeta">📁</button>
+                <input type="text" id="search-input" placeholder="Buscar local...">
+            </div>
+        </header>
+
+        <!-- Main Display Grid -->
+        <div class="main-content">
+            <main id="file-grid" class="file-grid"></main>
+
+            <!-- Contextual Properties Right Side Panel -->
+            <aside class="details-panel" id="details-panel">
+                <div id="preview-container">
+                    <div id="details-icon" class="details-icon">✨</div>
+                </div>
+
+                <h3 id="details-name">Selecciona un archivo</h3>
+                <p id="details-info" class="details-sub">Para ver sus detalles</p>
+
+                <div class="details-stats">
+                    <p><strong>Tamaño:</strong> <span id="details-size">--</span></p>
+                </div>
+
+                <!-- OS Mutating Actions (Deletion/Move) -->
+                <div class="details-actions" id="context-actions" style="display: none;">
+                    <button id="btn-cut" class="danger-btn action-btn">✂️ Cortar</button>
+                    <button id="btn-delete" class="danger-btn action-btn">🗑️ Eliminar</button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- DOM Manipulation Handler -->
+    <script src="script.js"></script>
+</body>
+
+</html>
